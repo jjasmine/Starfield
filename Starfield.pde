@@ -1,15 +1,46 @@
-//your code here
+NormalParticle [] ball;
 void setup()
 {
-	//your code here
+	size(500,500);
+	ball = new NormalParticle[5000];
+	for(int i = 0; i < ball.length; i++)
+		{
+			ball[i] = new NormalParticle();
+		}
 }
 void draw()
 {
-	//your code here
+	for(int i = 0; i < ball.length; i++)
+	{
+		ball[i].move();
+		ball[i].show();
+	}
 }
 class NormalParticle
 {
-	//your code here
+	double myX, myY,mySpeed, myAngle;
+	int myColor;
+ 	NormalParticle()
+ 	{
+ 		myX = 0;
+ 		myY = 0;
+ 		mySpeed = 10;
+ 		myAngle = Math.PI*2*Math.random();
+ 		myColor = 255;
+ 	}
+ 	void move()
+ 	{
+ 	myX = myX + Math.cos(myAngle*mySpeed);
+ 	myY = myY + Math.sin(myAngle*mySpeed);
+ 	}
+
+ 	void show()
+ 	{
+ 		
+ 		fill(myColor);
+ 		ellipse((float)myX,(float)myY,10,10);
+ 	}
+    
 }
 interface Particle
 {
